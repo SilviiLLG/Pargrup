@@ -36,22 +36,17 @@ export function Header() {
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="#inicio" className="group flex items-center gap-3">
+          {/* Logo - CORREGIDO: Se eliminó el div con los textos span */}
+          <Link href="#inicio" className="group flex items-center">
             <div className="relative">
-              {/* CAMBIO AQUÍ: Contenedor adaptado para tu logo real */}
-              <div className="w-10 h-10 flex items-center justify-center group-hover:glow-blue-sm transition-all duration-300">
+              <div className="h-12 w-auto flex items-center justify-center group-hover:glow-blue-sm transition-all duration-300">
                 <img 
                   src="/images/logo-pargrup.png" 
                   alt="Logo ParGrup" 
-                  className="w-full h-full object-contain"
+                  className="h-full w-auto object-contain"
                 />
               </div>
               <div className="absolute inset-0 rounded-lg bg-primary/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-foreground font-bold text-xl tracking-wider uppercase">PARGRUP</span>
-              <span className="text-muted-foreground text-[10px] uppercase tracking-[0.2em]">Engineering</span>
             </div>
           </Link>
 
