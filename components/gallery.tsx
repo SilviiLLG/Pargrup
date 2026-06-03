@@ -36,18 +36,14 @@ export function Header() {
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
-          {/* Logo Único (Sin textos redundantes) */}
-          <Link href="#inicio" className="group flex items-center">
-            <div className="relative">
-              {/* Ajustamos el tamaño (h-10) para que tenga buena presencia solo */}
-              <div className="h-10 w-auto flex items-center justify-center group-hover:glow-blue-sm transition-all duration-300">
-                <img 
-                  src="/images/logo-pargrup.png" 
-                  alt="Logo ParGrup Engineering" 
-                  className="h-full w-auto object-contain"
-                />
-              </div>
-              <div className="absolute inset-0 rounded-lg bg-primary/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+          {/* Logo Único - Solo la imagen */}
+          <Link href="#inicio" className="flex items-center">
+            <div className="h-10 w-auto flex items-center justify-center">
+              <img 
+                src="/images/logo-pargrup.png" 
+                alt="Logo ParGrup" 
+                className="h-full w-auto object-contain"
+              />
             </div>
           </Link>
 
