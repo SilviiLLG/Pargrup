@@ -41,8 +41,9 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Especialistas en ingeniería de motores Cummins con más de 27 años de experiencia 
-              en el sector industrial y marítimo.
+              Nos especializamos en el servicio de campo de grupos electrogenos de alta y media potencia de la linea cummins. Tambien ofrecemos servicios a motores Caterpillar, Perkins, Komatsu, entre otros.
+              Ofrecemos un servicio de primer nivel que se ajusta a la ncesidad de cada cliente.
+              Nuestro personal de servicio tecnico esta certificado y avalado por Cummins.
             </p>
             
             {/* Social Links */}
