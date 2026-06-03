@@ -2,10 +2,12 @@
 import { Header } from '@/components/header'
 import { Hero } from '@/components/hero'
 import { Services } from '@/components/services'
-import { Gallery } from '@/components/gallery'    // <-- Asegurate de que esta línea esté
-import { Guarantee } from '@/components/guarantee' // <-- Y esta también
+// 1. Buscamos la galería en su nuevo archivo con llaves { }
+import { ServiceGallery } from '@/components/services/service-gallery' 
+import { Guarantee } from '@/components/guarantee' 
 import { Contact } from '@/components/contact'
-import { Footer } from '@/components/footer'
+// 2. Buscamos el footer limpio sin llaves
+import Footer from '@/components/footer' 
 
 export default function HomePage() {
   return (
@@ -14,8 +16,11 @@ export default function HomePage() {
       <main className="flex-grow">
         <Hero />
         <Services />
-        <Gallery />    {/* <-- Aquí aparece la galería técnica */}
-        <Guarantee />  {/* <-- Aquí aparece el círculo de Cummins */}
+        
+        {/* 3. Colocamos el visualizador de motores acá */}
+        <ServiceGallery />    
+        
+        <Guarantee />  
         <Contact />
       </main>
       <Footer />
