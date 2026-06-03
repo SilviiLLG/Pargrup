@@ -8,8 +8,8 @@ import {
   Wrench, 
   Settings, 
   Cpu, 
-  Activity,
-  Clock,
+  FlaskConical,    // NUEVO: Ícono para laboratorio / aceite
+  CalendarCheck,   // NUEVO: Ícono para abono mensual
   CheckCircle,
   ArrowRight
 } from 'lucide-react'
@@ -62,11 +62,12 @@ const mainServices = [
   },
 ]
 
+// CAMBIO N5 APLICADO AQUÍ:
 const additionalServices = [
   { icon: Settings, title: 'Overhaul Completo', desc: 'Reconstrucción total del motor' },
   { icon: Cpu, title: 'Reprogramación ECU', desc: 'Optimización de parámetros' },
-  { icon: Activity, title: 'Análisis de Vibraciones', desc: 'Diagnóstico predictivo avanzado' },
-  { icon: Clock, title: 'Servicio Express', desc: 'Atención prioritaria garantizada' },
+  { icon: FlaskConical, title: 'Análisis de aceite', desc: 'Detección de índices de metales.' },
+  { icon: CalendarCheck, title: 'Revisión integral periódica', desc: 'Planes de mantenimiento preventivo de abono mensual' },
 ]
 
 export function Services() {

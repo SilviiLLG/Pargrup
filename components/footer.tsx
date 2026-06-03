@@ -46,7 +46,7 @@ export default function Footer() {
             Servicio Especializado
           </h4>
           <p className="text-xs font-light leading-relaxed text-gray-400">
-            Soporte técnico, regulaciones estequiométricas y calibración electrónica multimarca (Cummins INSITE / InPower, Doosan) para Oil & Gas e industria pesada.
+            Soporte técnico, regulaciones estequiométricas y calibración electrónica multimarca.
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export default function Footer() {
       {/* BARRA INFERIOR DE DERECHOS */}
       <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] font-mono tracking-wide">
         <p>&copy; {new Date().getFullYear()} ParGrup. Todos los derechos reservados.</p>
-        <p className="text-gray-600">Diseño y Desarrollo de Soluciones Digitales</p>
+        <p className="text-gray-600">Diseño y Desarrollo de Soluciones </p>
       </div>
     </footer>
   )
