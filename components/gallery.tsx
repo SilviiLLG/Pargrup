@@ -1,89 +1,138 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
-import Image from 'next/image'
-import { X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react'
-//Aqui hay que agregar las imagenes
-const galleryImages = [
-  { src: '/images/cummins-engine(2).jpg', alt: 'Motor Cummins', title: 'Motor Cummins QSK60', category: 'Generación' },
-  { src: '/images/gallery-1.jpg', alt: 'Servicio técnico', title: 'Servicio Técnico Especializado', category: 'Mantenimiento' },
-  { src: '/images/gallery-2.jpg', alt: 'Diagnóstico', title: 'Diagnóstico Electrónico', category: 'Diagnóstico' },
-  { src: '/images/gallery-3.jpg', alt: 'Grupo electrógeno', title: 'Grupo Electrógeno Industrial', category: 'Generación' },
-  { src: '/images/gallery-4.jpg', alt: 'Componentes', title: 'Componentes de Alta Precisión', category: 'Repuestos' },
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X, Phone } from 'lucide-react'
+import Link from 'next/link'
+
+const navItems = [
+  { label: 'Inicio', href: '#inicio' },
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Motores', href: '#galeria' },
 ]
 
-export function Gallery() {
-  const ref = useRef(null)
-  // Ajuste de margen para que la animación se dispare rápido
-  const isInView = useInView(ref, { once: true, margin: '-50px' })
-  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+export function Header() {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  const openLightbox = (index: number) => setSelectedImage(index)
-  const closeLightbox = () => setSelectedImage(null)
-  const nextImage = () => setSelectedImage((prev) => (prev !== null ? (prev + 1) % galleryImages.length : 0))
-  const prevImage = () => setSelectedImage((prev) => (prev !== null ? (prev - 1 + galleryImages.length) % galleryImages.length : 0))
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <section id="galeria" className="relative py-24 lg:py-32 overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-card/30" />
-      
-      <div className="container mx-auto px-6 relative z-10" ref={ref}>
-        {/* Header de sección con colores forzados para evitar el efecto "apagado" */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <span className="inline-block px-4 py-2 rounded-full glass text-sm text-primary mb-6 border border-primary/20">
-            Galería Técnica
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white uppercase tracking-tight">
-            Nuestro{' '}
-            <span className="text-primary text-glow brightness-125">Trabajo</span>
-          </h2>
-          <p className="text-gray-400 text-lg leading-relaxed">
-            Instalaciones de primer nivel y equipamiento de última generación.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.1 }}
-              onClick={() => openLightbox(index)}
-              className={`group relative cursor-pointer rounded-2xl overflow-hidden border border-white/5 ${
-                index === 0 ? 'sm:col-span-2 sm:row-span-2' : ''
-              }`}
-            >
-              <div className="relative aspect-[4/3] w-full h-full glass">
-                <Image src={image.src} alt={image.alt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 p-6">
-                   <span className="text-[10px] text-primary font-mono uppercase border border-primary/30 px-2 py-1 rounded bg-primary/5 mb-2 inline-block">
-                    {image.category}
-                  </span>
-                  <h3 className="text-white font-medium text-lg">{image.title}</h3>
-                </div>
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled 
+            ? 'glass py-3' 
+            : 'bg-transparent py-5'
+        }`}
+      >
+        <div className="container mx-auto px-6 flex items-center justify-between">
+          {/* Logo Único (Sin textos redundantes) */}
+          <Link href="#inicio" className="group flex items-center">
+            <div className="relative">
+              {/* Ajustamos el tamaño (h-10) para que tenga buena presencia solo */}
+              <div className="h-10 w-auto flex items-center justify-center group-hover:glow-blue-sm transition-all duration-300">
+                <img 
+                  src="/images/logo-pargrup.png" 
+                  alt="Logo ParGrup Engineering" 
+                  className="h-full w-auto object-contain"
+                />
               </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+              <div className="absolute inset-0 rounded-lg bg-primary/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+          </Link>
 
-      {/* Lightbox */}
-      {selectedImage !== null && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md" onClick={closeLightbox}>
-          <button className="absolute top-6 right-6 text-white"><X size={32}/></button>
-          <div className="relative w-[85vw] h-[80vh]" onClick={e => e.stopPropagation()}>
-            <Image src={galleryImages[selectedImage].src} alt="Zoom" fill className="object-contain" />
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-muted-foreground hover:text-foreground text-sm font-medium tracking-wide transition-colors duration-300 relative group"
+              >
+                {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
+              </Link>
+            ))}
+          </nav>
+
+          {/* CTA Button */}
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href="https://wa.me/5491176686770"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:glow-blue transition-all duration-300 hover:scale-105"
+            >
+              <Phone className="w-4 h-4" />
+              <span>WhatsApp</span>
+            </a>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-foreground z-50"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
-      )}
-    </section>
+      </motion.header>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 md:hidden bg-background/95 backdrop-blur-xl"
+          >
+            <nav className="flex flex-col items-center justify-center h-full gap-8">
+              {navItems.map((item, i) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-2xl font-medium text-foreground hover:text-primary transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.a
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ delay: navItems.length * 0.1 }}
+                href="https://wa.me/5491176686770"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:glow-blue transition-all"
+              >
+                <Phone className="w-5 h-5" />
+                <span>WhatsApp</span>
+              </motion.a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
