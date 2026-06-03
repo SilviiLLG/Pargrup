@@ -39,13 +39,18 @@ export function Header() {
           {/* Logo */}
           <Link href="#inicio" className="group flex items-center gap-3">
             <div className="relative">
-              <div className="w-10 h-10 rounded-lg bg-primary/20 border border-primary/50 flex items-center justify-center group-hover:glow-blue-sm transition-all duration-300">
-                <span className="text-primary font-bold text-lg">P</span>
+              {/* CAMBIO AQUÍ: Contenedor adaptado para tu logo real */}
+              <div className="w-10 h-10 flex items-center justify-center group-hover:glow-blue-sm transition-all duration-300">
+                <img 
+                  src="/images/logo-pargrup.png" 
+                  alt="Logo ParGrup" 
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="absolute inset-0 rounded-lg bg-primary/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             <div className="flex flex-col">
-              <span className="text-foreground font-bold text-xl tracking-wider">PARGRUP</span>
+              <span className="text-foreground font-bold text-xl tracking-wider uppercase">PARGRUP</span>
               <span className="text-muted-foreground text-[10px] uppercase tracking-[0.2em]">Engineering</span>
             </div>
           </Link>
@@ -67,7 +72,7 @@ export function Header() {
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="https://wa.me/5491138157719"
+              href="https://wa.me/5491176686770"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:glow-blue transition-all duration-300 hover:scale-105"
@@ -80,7 +85,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground z-50"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -88,23 +93,22 @@ export function Header() {
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 md:hidden bg-background/95 backdrop-blur-xl"
           >
-            <div className="absolute inset-0 bg-background/95 backdrop-blur-xl" />
-            <nav className="relative flex flex-col items-center justify-center h-full gap-8">
+            <nav className="flex flex-col items-center justify-center h-full gap-8">
               {navItems.map((item, i) => (
                 <motion.div
                   key={item.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: i * 0.1 }}
                 >
                   <Link
@@ -119,8 +123,9 @@ export function Header() {
               <motion.a
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                href="https://wa.me/5491138157719"
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ delay: navItems.length * 0.1 }}
+                href="https://wa.me/5491176686770"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:glow-blue transition-all"

@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react'
 //Aqui hay que agregar las imagenes
 const galleryImages = [
-  { src: '/images/cummins-engine.jpg', alt: 'Motor Cummins', title: 'Motor Cummins QSK60', category: 'Generación' },
+  { src: '/images/cummins-engine(2).jpg', alt: 'Motor Cummins', title: 'Motor Cummins QSK60', category: 'Generación' },
   { src: '/images/gallery-1.jpg', alt: 'Servicio técnico', title: 'Servicio Técnico Especializado', category: 'Mantenimiento' },
   { src: '/images/gallery-2.jpg', alt: 'Diagnóstico', title: 'Diagnóstico Electrónico', category: 'Diagnóstico' },
   { src: '/images/gallery-3.jpg', alt: 'Grupo electrógeno', title: 'Grupo Electrógeno Industrial', category: 'Generación' },

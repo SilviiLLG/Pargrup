@@ -84,8 +84,10 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed text-pretty"
             >
-              Especialistas en motores Cummins. Servicio técnico de primer nivel para la industria marítima, 
-              generación de energía y maquinaria pesada.
+              Nos especializamos en el servicio de campo de grupos electrogenos de alta y media potencia de la linea Cummins. 
+              Tambien ofrecemos servicios a motores Caterpillar, Perkins, Komatsu, entre Otros.
+              Ofrecemos un servicio de primer nivel que se ajusta a la necesidad de cada cliente.
+              Nuestro personal de servicio tecnico esta certificado y avalado por Cummins.
             </motion.p>
 
             {/* CTA Buttons */}
