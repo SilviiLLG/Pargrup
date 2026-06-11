@@ -87,7 +87,7 @@ export function Hero() {
               Nos especializamos en el servicio de campo de grupos electrogenos de alta y media potencia de la linea Cummins. 
               Tambien ofrecemos servicios a motores Caterpillar, Perkins, Komatsu, entre Otros.
               Ofrecemos un servicio de primer nivel que se ajusta a la necesidad de cada cliente.
-              Nuestro personal de servicio tecnico esta certificado y avalado por Cummins.
+              Nuestro personal de servicio tecnico esta certified y avalado por Cummins.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -98,10 +98,10 @@ export function Hero() {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <a
-                href="#servicios"
+                href="#trabajos"
                 className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-base hover:glow-blue transition-all duration-300 hover:scale-105 text-center"
               >
-                Explorar Servicios
+                Explorar Trabajos
               </a>
               <a
                 href="#contacto"
@@ -147,7 +147,7 @@ export function Hero() {
               <div className="relative rounded-3xl overflow-hidden glass p-1">
                 <div className="rounded-2xl overflow-hidden bg-card">
                   <Image
-                    src="/images/cummins-engine(2).jpg"
+                    src="/public/images/cummins-engine(2).jpg"
                     alt="Motor Cummins de alta potencia"
                     width={800}
                     height={800}
