@@ -147,7 +147,7 @@ export function Hero() {
               <div className="relative rounded-3xl overflow-hidden glass p-1">
                 <div className="rounded-2xl overflow-hidden bg-card">
                   <Image
-                    src="/public/images/cummins-engine(2).jpg"
+                    src="images/cummins-engine.jpg"
                     alt="Motor Cummins de alta potencia"
                     width={800}
                     height={800}

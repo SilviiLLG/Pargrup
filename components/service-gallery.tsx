@@ -215,7 +215,7 @@ export function ServiceGallery() {
                   className="max-h-[450px] w-full object-contain select-none transition-all duration-300" 
                   alt="Registro técnico ParGrup"
                   onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=800&auto=format&fit=crop&q=80"
+                    e.currentTarget.src = "cummins-engine.jpg"
                   }}
                 />
                 
