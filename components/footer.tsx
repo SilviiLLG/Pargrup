@@ -55,7 +55,7 @@ export default function Footer() {
       {/* BARRA INFERIOR DE DERECHOS */}
       <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] font-mono tracking-wide">
         <p>&copy; {new Date().getFullYear()} ParGrup. Todos los derechos reservados.</p>
-        <p className="text-gray-600">Diseño y Desarrollo de Soluciones </p>
+        <p className="text-gray-600">Diseño y Desarrollo de Soluciones - Teknovya </p>
       </div>
     </footer>
   )
