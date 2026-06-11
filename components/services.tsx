@@ -37,7 +37,6 @@ const mainServices = [
     subtitle: 'Emergency Support 24/7',
     description: 'Respuesta inmediata ante fallas críticas. Diagnóstico computarizado avanzado con equipamiento Cummins original.',
     features: [
-      'Respuesta en 2 horas',
       'Diagnóstico electrónico',
       'Análisis de aceite',
       'Reportes detallados'
@@ -54,8 +53,6 @@ const mainServices = [
     features: [
       'Plan preventivo',
       'Plan predictivo',
-      'Monitoreo remoto',
-      'Historial digital'
     ],
     color: 'primary',
     premium: true,
