@@ -48,19 +48,18 @@ const mainServices = [
     id: 'mantenimiento',
     icon: Wrench,
     title: 'Mantenimiento Programado',
-    subtitle: 'Preventive, Predictive & Corrective', // Actualizado
-    description: 'Planes de mantenimiento personalizados y esquemas correctivos que maximizan la vida útil de su motor y minimizan tiempos de inactividad.', // Actualizado
+    subtitle: 'Preventive & Predictive',
+    description: 'Planes de mantenimiento personalizados que maximizan la vida útil de su motor y minimizan tiempos de inactividad.',
     features: [
       'Plan preventivo',
       'Plan predictivo',
-      'Plan correctivo', // PUNTO 4 APLICADO AQUÍ
+      'Plan correctivo' // PUNTO 4: Agregado de forma limpia aquí
     ],
     color: 'primary',
     premium: true,
   },
 ]
 
-// Servicios complementarios
 const additionalServices = [
   { icon: Settings, title: 'Overhaul Completo', desc: 'Reconstrucción total del motor' },
   { icon: Cpu, title: 'Reprogramación ECU', desc: 'Optimización de parámetros' },
@@ -73,10 +72,10 @@ export function Services() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="servicios" className="relative py-24 lg:py-32 overflow-hidden bg-[#0a0a0a]">
+    <section id="servicios" className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 grid-pattern opacity-10" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-800 to-transparent" />
+      <div className="absolute inset-0 grid-pattern opacity-20" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       
       <div className="container mx-auto px-6" ref={ref}>
         {/* Section Header */}
@@ -86,14 +85,14 @@ export function Services() {
           transition={{ duration: 0.8 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-mono text-cyan-400 mb-6 uppercase tracking-wider">
+          <span className="inline-block px-4 py-2 rounded-full glass text-sm text-primary mb-6">
             Nuestros Servicios
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 text-balance text-white uppercase tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-balance">
             Soluciones Integrales de{' '}
-            <span className="text-cyan-400 font-light">Ingeniería</span>
+            <span className="text-primary text-glow">Ingeniería</span>
           </h2>
-          <p className="text-neutral-400 text-sm leading-relaxed text-pretty font-light">
+          <p className="text-muted-foreground text-lg leading-relaxed text-pretty">
             Tres pilares fundamentales que garantizan el máximo rendimiento y confiabilidad de su inversión.
           </p>
         </motion.div>
@@ -108,16 +107,16 @@ export function Services() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="group relative"
             >
-              <div className={`h-full rounded-2xl bg-neutral-950/40 border border-neutral-900 p-6 lg:p-8 transition-all duration-500 hover:border-neutral-800 ${
-                service.emergency ? 'border-destructive/40 hover:border-destructive/60' : ''
+              <div className={`h-full rounded-2xl glass p-6 lg:p-8 transition-all duration-500 hover:glow-blue-sm ${
+                service.emergency ? 'border-destructive/50 hover:border-destructive' : ''
               }`}>
                 {/* Blueprint Pattern for Puesta en Marcha */}
                 {service.blueprint && (
                   <div className="absolute inset-0 rounded-2xl opacity-5 overflow-hidden pointer-events-none">
                     <div className="absolute inset-0" style={{
                       backgroundImage: `
-                        linear-gradient(90deg, #00cfff 1px, transparent 1px),
-                        linear-gradient(#00cfff 1px, transparent 1px)
+                        linear-gradient(90deg, var(--primary) 1px, transparent 1px),
+                        linear-gradient(var(--primary) 1px, transparent 1px)
                       `,
                       backgroundSize: '20px 20px'
                     }} />
@@ -127,7 +126,7 @@ export function Services() {
                 {/* Emergency Badge */}
                 {service.emergency && (
                   <div className="absolute -top-3 right-6">
-                    <span className="px-3 py-1 rounded-full bg-destructive text-destructive-foreground text-[10px] font-bold uppercase tracking-wider animate-pulse">
+                    <span className="px-3 py-1 rounded-full bg-destructive text-destructive-foreground text-xs font-bold uppercase tracking-wider animate-pulse">
                       24/7
                     </span>
                   </div>
@@ -136,7 +135,7 @@ export function Services() {
                 {/* Premium Badge */}
                 {service.premium && (
                   <div className="absolute -top-3 right-6">
-                    <span className="px-3 py-1 rounded-full bg-cyan-500 text-black text-[10px] font-bold uppercase tracking-wider">
+                    <span className="px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider">
                       Premium
                     </span>
                   </div>
@@ -145,48 +144,46 @@ export function Services() {
                 {/* Icon */}
                 <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 ${
                   service.emergency 
-                    ? 'bg-destructive/10 group-hover:bg-destructive/20' 
-                    : 'bg-cyan-500/10 group-hover:bg-cyan-500/20'
+                    ? 'bg-destructive/20 group-hover:bg-destructive/30' 
+                    : 'bg-primary/20 group-hover:bg-primary/30'
                 }`}>
                   <service.icon className={`w-7 h-7 ${
-                    service.emergency ? 'text-destructive' : 'text-cyan-400'
+                    service.emergency ? 'text-destructive' : 'text-primary'
                   }`} />
                 </div>
 
                 {/* Content */}
-                <div className="space-y-4 flex flex-col h-[calc(100%-80px)] justify-between">
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-neutral-200 mb-1 uppercase tracking-wide">
-                        {service.title}
-                      </h3>
-                      <p className="text-[10px] text-neutral-500 uppercase tracking-wider font-mono">
-                        {service.subtitle}
-                      </p>
-                    </div>
-
-                    <p className="text-neutral-400 text-xs leading-relaxed font-light">
-                      {service.description}
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-1">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider font-mono">
+                      {service.subtitle}
                     </p>
-
-                    {/* Features List */}
-                    <ul className="space-y-2 pt-4 border-t border-neutral-900">
-                      {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2 text-xs text-neutral-400 font-light">
-                          <CheckCircle className="w-3.5 h-3.5 text-cyan-500 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
 
-                  {/* CTA LINKED TO CONTACT (PUNTO 5 APLICADO AQUÍ) */}
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  {/* Features List */}
+                  <ul className="space-y-2 pt-4 border-t border-border/50">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                        {feature}
+                      </td>
+                    ))}
+                  </ul>
+
+                  {/* PUNTO 5: Botón convertido en enlace <a> manteniendo tus estilos exactos */}
                   <a 
-                    href="#contacto" 
-                    className="w-full mt-6 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-neutral-900 hover:bg-cyan-500 border border-neutral-800 hover:border-cyan-400 text-neutral-300 hover:text-black text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300"
+                    href="#contacto"
+                    className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-secondary/50 hover:bg-secondary text-foreground text-sm font-medium transition-all group-hover:bg-primary group-hover:text-primary-foreground"
                   >
                     Solicitar Información
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </a>
                 </div>
               </div>
@@ -200,26 +197,25 @@ export function Services() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <h3 className="text-xs font-mono uppercase tracking-widest text-center mb-8 text-neutral-500">
+          <h3 className="text-xl font-semibold text-center mb-8 text-muted-foreground">
             Servicios Complementarios
           </h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {additionalServices.map((service, index) => (
-              <a
+              <div
                 key={index}
-                href="#contacto"
-                className="group p-5 rounded-xl bg-neutral-950/40 border border-neutral-900 hover:border-neutral-800 transition-all duration-300 text-left"
+                className="group p-5 rounded-xl glass hover:glow-blue-sm transition-all duration-300 cursor-pointer"
               >
-                <div className="w-10 h-10 rounded-lg bg-cyan-500/5 flex items-center justify-center mb-3 group-hover:bg-cyan-500/10 transition-colors">
-                  <service.icon className="w-5 h-5 text-cyan-400" />
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
+                  <service.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h4 className="font-bold text-neutral-200 text-xs mb-1 uppercase tracking-wide">{service.title}</h4>
-                <p className="text-[11px] text-neutral-400 font-light leading-relaxed">{service.desc}</p>
-              </a>
+                <h4 className="font-semibold text-foreground text-sm mb-1">{service.title}</h4>
+                <p className="text-xs text-muted-foreground">{service.desc}</p>
+              </div>
             ))}
           </div>
         </motion.div>
       </div>
     </section>
   )
-}
+)
