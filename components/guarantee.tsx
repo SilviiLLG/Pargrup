@@ -16,16 +16,16 @@ export function Guarantee() {
     { icon: Headphones, title: 'Soporte Continuo', desc: 'Asistencia técnica telefónica y guardias adaptadas a su necesidad.' },
   ]
 
-  // Información detallada de los Acuerdos LSA (Por Qué Elegirnos) para el modal
+  // Información detallada de los Acuerdos LSA (Por Qué Elegirnos) para el modal interactivo
   const lsaDetails = {
     title: 'ACUERDOS DE SOPORTE LSA*',
     subtitle: '¿POR QUÉ ELEGIRNOS?',
-    description: 'Estructuramos acuerdos de soporte de ciclo de vida a medida (Lifecycle Support Agreements).',
+    description: 'Estructuramos acuerdos de soporte de ciclo de vida a medida (Lifecycle Support Agreements) para adaptarnos a las necesidades críticas de su operación.',
     points: [
-      { title: 'Contratos a Medida', desc: 'Para aplicaciones Standby brindamos coberturas programadas con análisis de fluidos e informes automatizados.' },
-      { title: 'Regímenes Prime', desc: 'Garantizamos packs de consumibles y mantenimiento preventivo continuo cada 250 horas, absorbiendo la responsabilidad operativa.' },
-      { title: 'Componentes Seleccionados', desc: 'Máxima confiabilidad en piezas y repuestos originales para cada motor intervenido.' },
-      { title: 'Logística en Yacimientos', desc: 'Despliegue operativo inmediato y asistencia técnica especializada en toda la Argentina.' }
+      { title: 'Contratos a Medida (Standby)', desc: 'Para aplicaciones de respaldo brindamos coberturas programadas con análisis de fluidos e informes automatizados.' },
+      { title: 'Regímenes Prime (Continuo)', desc: 'Garantizamos packs de consumibles y mantenimiento preventivo continuo cada 250 horas, absorbiendo toda la responsabilidad operativa.' },
+      { title: 'Componentes Seleccionados', desc: 'Máxima confiabilidad utilizando exclusivamente piezas y repuestos originales en cada motor intervenido.' },
+      { title: 'Logística en Yacimientos', desc: 'Despliegue operativo inmediato y asistencia técnica especializada en plantas estratégicas de toda la Argentina.' }
     ]
   }
 
@@ -34,7 +34,7 @@ export function Guarantee() {
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           
-          {/* COLUMNA IZQUIERDA: Círculo original brillante azul de Cummins */}
+          {/* COLUMNA IZQUIERDA: Círculo original brillante azul de Cummins (Estilo Original Intacto) */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative aspect-square w-full max-w-[380px] rounded-full border-2 border-cyan-500/30 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-cyan-950/20 to-black shadow-[0_0_50px_rgba(6,182,212,0.15)]">
               <div className="w-14 h-14 rounded-2xl bg-cyan-950/50 border border-cyan-500/30 flex items-center justify-center mb-4">
@@ -43,7 +43,7 @@ export function Guarantee() {
               <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-mono mb-1">
                 GARANTÍA DE
               </span>
-              <h3 className="text-2xl font-bold max-w-xs text-white uppercase">
+              <h3 className="text-2xl font-bold max-w-xs text-white uppercase tracking-wide">
                 Repuestos Originales <span className="text-cyan-400 block mt-1">CUMMINS</span>
               </h3>
               <div className="mt-4 flex items-center gap-2 text-xs text-cyan-400 bg-cyan-950/40 px-3 py-1 rounded-full border border-cyan-500/20">
@@ -56,19 +56,22 @@ export function Guarantee() {
           {/* COLUMNA DERECHA: Textos originales y las 4 tarjetas fijas */}
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-4">
-              {/* BOTON INTERACTIVO: Abre la información oculta */}
+              
+              {/* BOTON INTERACTIVO: El disparador limpio que abre el Modal de LSA */}
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-xs font-mono text-cyan-400 uppercase tracking-wider hover:bg-cyan-500 hover:text-black transition-all duration-300 shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-xs font-mono text-cyan-400 uppercase tracking-wider hover:bg-cyan-500 hover:text-black hover:border-cyan-400 transition-all duration-300 shadow-sm group"
               >
-                Nuestra Garantía • <span className="underline font-bold">Ver ¿Por Qué Elegirnos?</span>
+                <span>Nuestra Garantía</span>
+                <span className="text-neutral-500 font-sans">•</span>
+                <span className="underline font-bold group-hover:text-black">Ver ¿Por Qué Elegirnos?</span>
               </button>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white uppercase">
                 Compromiso con la <span className="text-cyan-400 text-glow">Excelencia</span>
               </h2>
 
-              <p className="text-neutral-400 text-sm leading-relaxed">
+              <p className="text-neutral-400 text-sm leading-relaxed text-pretty">
                 Más de dos décadas trabajando exclusivamente con repuestos originales Cummins, garantizando el máximo rendimiento y durabilidad de cada motor.
               </p>
             </div>
@@ -78,7 +81,7 @@ export function Guarantee() {
               {features.map((feat, i) => (
                 <div 
                   key={i} 
-                  className="p-4 rounded-xl bg-neutral-900/40 border border-neutral-900 flex items-start gap-4"
+                  className="p-4 rounded-xl bg-neutral-900/40 border border-neutral-900 flex items-start gap-4 transition-colors hover:border-neutral-800"
                 >
                   <div className="w-9 h-9 rounded-lg bg-cyan-950/40 border border-cyan-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <feat.icon className="w-4 h-4 text-cyan-400" />
@@ -103,49 +106,54 @@ export function Guarantee() {
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Fondo oscuro traslúcido de cierre */}
+            
+            {/* Fondo oscuro difuminado */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/85 backdrop-blur-sm"
             />
 
-            {/* Contenedor del contenido */}
+            {/* Contenedor de la Tarjeta Modal Pop-up */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
               className="relative w-full max-w-2xl bg-neutral-950 border border-neutral-800 rounded-2xl p-6 lg:p-8 shadow-2xl z-10 text-white"
             >
-              {/* Botón Cerrar */}
+              {/* Botón superior de cierre */}
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 p-2 text-neutral-400 hover:text-white transition-colors"
+                className="absolute top-4 right-4 p-2 text-neutral-400 hover:text-white rounded-lg hover:bg-neutral-900 transition-all"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Cabecera del modal */}
+              {/* Cabecera contextual */}
               <div className="mb-6">
-                <span className="text-xs font-mono text-cyan-400 tracking-wider uppercase block mb-1">
-                  {lsaDetails.subtitle}
-                </span>
-                <h3 className="text-xl lg:text-2xl font-black text-white tracking-wide">
+                <div className="flex items-center gap-2 mb-1">
+                  <Handshake className="w-4 h-4 text-cyan-400" />
+                  <span className="text-xs font-mono text-cyan-400 tracking-wider uppercase">
+                    {lsaDetails.subtitle}
+                  </span>
+                </div>
+                <h3 className="text-xl lg:text-2xl font-black text-white tracking-wide uppercase">
                   {lsaDetails.title}
                 </h3>
                 <div className="h-0.5 w-16 bg-cyan-500 mt-2" />
               </div>
 
-              <p className="text-neutral-400 text-sm mb-6 leading-relaxed">
+              <p className="text-neutral-400 text-sm mb-6 leading-relaxed text-pretty">
                 {lsaDetails.description}
               </p>
 
-              {/* Listado de puntos clave LSA */}
-              <div className="space-y-4 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
+              {/* Listado de puntos clave interactivos mapeados */}
+              <div className="space-y-3 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
                 {lsaDetails.points.map((point, index) => (
-                  <div key={index} className="p-4 rounded-xl bg-neutral-900/50 border border-neutral-900 flex gap-3 items-start">
+                  <div key={index} className="p-4 rounded-xl bg-neutral-900/30 border border-neutral-900 flex gap-3 items-start hover:bg-neutral-900/50 transition-colors">
                     <CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-xs font-bold uppercase tracking-wide text-white mb-1">
@@ -159,14 +167,10 @@ export function Guarantee() {
                 ))}
               </div>
 
-              {/* Botón inferior de cierre */}
-              <div className="mt-6 flex justify-end">
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-xs font-medium text-white hover:bg-neutral-800 transition-colors"
-                >
-                  Entendido / Cerrar
-                </button>
+              {/* Pie de página legal e informativo de los contratos LSA */}
+              <div className="mt-6 pt-4 border-t border-neutral-900 text-[10px] text-neutral-600 leading-relaxed">
+                <p>* LSA (Lifecycle Support Agreements / Acuerdos de Soporte de Ciclo de Vida).</p>
+                <p className="mt-1">ParGrup es una empresa de servicios técnicos de ingeniería independiente. Toda mención a marcas registradas se realiza exclusivamente con fines descriptivos para indicar la especialización del servicio técnico ofrecido.</p>
               </div>
             </motion.div>
           </div>
