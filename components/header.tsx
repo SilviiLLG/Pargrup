@@ -1,52 +1,43 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone } from 'lucide-react'
 import Link from 'next/link'
 
+// PUNTO 2: Listado de navegación unificado con todas las secciones de la landing
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
+  { label: 'Servicios', href: '#servicios' },
   { label: 'Nuestros Trabajos', href: '#trabajos' },
-  { label: 'Motores', href: '#galeria' },
+  { label: 'Por Qué Elegirnos', href: '#elegirnos' },
 ]
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   return (
     <>
+      {/* PUNTO 1: Color sólido oscuro fijo desde el inicio sin opacidades dinámicas */}
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled 
-            ? 'glass py-3' 
-            : 'bg-transparent py-5'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 py-3 bg-[#0a0a0a] border-b border-neutral-900"
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
-          {/* Logo - CORREGIDO: Se eliminó el div con los textos span */}
+          
+          {/* LOGO REFACTORIZADO (PUNTO 1): Más grande (h-16), fondo transparente y optimizado */}
           <Link href="#inicio" className="group flex items-center">
             <div className="relative">
-              <div className="h-12 w-auto flex items-center justify-center group-hover:glow-blue-sm transition-all duration-300">
+              <div className="h-16 w-auto flex items-center justify-center transition-all duration-300">
                 <img 
                   src="/images/logo-pargrup.png" 
                   alt="Logo ParGrup" 
-                  className="h-full w-auto object-contain"
+                  className="h-full w-auto object-contain" // Evita deformaciones al escalar
                 />
               </div>
-              <div className="absolute inset-0 rounded-lg bg-primary/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 rounded-lg bg-cyan-500/5 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           </Link>
 
@@ -56,10 +47,10 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground text-sm font-medium tracking-wide transition-colors duration-300 relative group"
+                className="text-neutral-400 hover:text-white text-sm font-medium tracking-wide transition-colors duration-300 relative group"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
           </nav>
@@ -70,7 +61,7 @@ export function Header() {
               href="https://wa.me/5491176686770"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:glow-blue transition-all duration-300 hover:scale-105"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-500 text-black font-bold text-sm hover:bg-cyan-400 transition-all duration-300 hover:scale-105"
             >
               <Phone className="w-4 h-4" />
               <span>WhatsApp</span>
@@ -80,7 +71,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground z-50"
+            className="md:hidden p-2 text-white z-50"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -95,7 +86,7 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 md:hidden bg-background/95 backdrop-blur-xl"
+            className="fixed inset-0 z-40 md:hidden bg-[#0a0a0a]/98 backdrop-blur-xl"
           >
             <nav className="flex flex-col items-center justify-center h-full gap-8">
               {navItems.map((item, i) => (
@@ -109,7 +100,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-2xl font-medium text-foreground hover:text-primary transition-colors"
+                    className="text-2xl font-medium text-white hover:text-cyan-400 transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -123,7 +114,7 @@ export function Header() {
                 href="https://wa.me/5491176686770"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:glow-blue transition-all"
+                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition-all"
               >
                 <Phone className="w-5 h-5" />
                 <span>WhatsApp</span>

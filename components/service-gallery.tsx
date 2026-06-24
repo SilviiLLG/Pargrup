@@ -11,144 +11,105 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Camera, Filter, ChevronLeft, ChevronRight, Wrench, ShieldCheck, Lightbulb, Target, Landmark, Handshake, Users } from "lucide-react"
+import { Camera, Filter, ChevronLeft, ChevronRight, Wrench, ShieldCheck, Target } from "lucide-react"
 
-// BASE DE DATOS ADAPTADA CON EL NUEVO MÓDULO ESTRATÉGICO
+// BASE DE DATOS REFACTORIZADA: MOTORES LIMPIOS Y NORMALIZADOS
 const trabajosMotores = [
   {
     id: 1,
-    engine: "Doosan",
+    engine: "DOOSAN",
     title: "6 CILINDROS",
     type: "After",
-    service: "SRV-2026-001",
-    date: "2026-05-10",
-    specification: "Motor en línea de 6 cilindros",
+    specification: "MOTOR EN LÍNEA DE 6 CILINDROS",
     mainTitle: "Recuperación integral de grupo electrógeno Doosan 6Cyl - 220 kVA",
     desafio: "Un grupo electrógeno de 220 kVA, equipado con motor Doosan de 6 cilindros, alcanzó aproximadamente 25.000 horas de operación continua en aplicaciones petroleras de alta exigencia en la provincia de Neuquén. Las condiciones severas de trabajo y el desgaste acumulado comprometían la confiabilidad operativa.",
     solucion: "Se ejercitó un overhaul completo del motor. La intervención incluía el desmontaje total e inspección técnica del conjunto motriz, control dimensional de componentes críticos según especificaciones del fabricante, servicio integral de tapa de cilindros y sistema de distribución.",
     resultado: "El equipo fue reacondicionado con éxito y se encuentra en su etapa final, listo para pruebas bajo carga y validación operativa, con parámetros restablecidos.",
-    valorAgregado: "Este proyecto reafirma la capacidad para intervenir en motores sometidos a condiciones extremas, brindando soluciones que maximizan la disponibilidad.",
     imagenes: Array.from({ length: 4 }, (_, i) => `/images/doosan-6cil_foto-${i + 1}.jpg`)
   },
   {
     id: 2,
-    engine: "Doosan",
+    engine: "DOOSAN",
     title: "V12",
     type: "During",
-    service: "SRV-2026-002",
-    date: "2026-05-14",
-    specification: "Motor de alta potencia V12",
+    specification: "MOTOR DE ALTA POTENCIA V12",
     mainTitle: "Recuperación integral de grupo electrógeno Doosan V12",
     desafio: "Un grupo electrógeno de alta potencia, equipado con motor Doosan V12, alcanzó horas críticas de operación continua en aplicaciones industriales severas.",
     solucion: "Se está ejecutando un overhaul completo del motor. La intervención en desarrollo incluye el desmontaje total para inspección técnica del conjunto motriz y control dimensional exhaustivo.",
     resultado: "El equipo se encuentra actualmente en proceso de reacondicionamiento técnico y control dimensional de bancadas, avanzando rigurosamente.",
-    valorAgregado: "Capacidad técnica especializada para intervenir en bloques de alta cilindrada y complejidad estructural.",
     imagenes: Array.from({ length: 3 }, (_, i) => `/images/doosan-v12_foto-${i + 1}.jpg`)
   },
   {
     id: 3,
-    engine: "KTA50",
-    title: "ROTURA DE VALVULAS",
+    engine: "CUMMINS KTA50",
+    title: "ROTURA DE VÁLVULAS",
     type: "Before",
-    service: "SRV-2026-003",
-    date: "2026-05-18",
-    specification: "Diagnóstico de fallas críticas Cummins",
+    specification: "DIAGNÓSTICO DE FALLAS CRÍTICAS CUMMINS",
     mainTitle: "Recuperación integral de motor Cummins KTA50 en central ENERSA",
     desafio: "Motor Cummins KTA50 presentó una falla crítica producto del desgaste avanzado en el sistema de válvulas, asociado a falta de mantenimiento preventivo, derivando en una falla catastrófica.",
     solucion: "Se ejercitó una intervención mecánica mayor, abordando la reparación integral del banco afectado, reemplazo completo de cilindros, pistones y componentes críticos.",
     resultado: "El motor fue recuperado exitosamente, restituyendo sus condiciones operativas y asegurando la confiabilidad necesaria para servicio continuo.",
-    valorAgregado: "Soluciones eficientes en entornos de alta exigencia donde la continuidad operativa es crítica.",
     imagenes: Array.from({ length: 8 }, (_, i) => `/images/kta50-valvulas_foto-${i + 1}.jpg`)
   },
   {
     id: 4,
-    engine: "QSK 60 G",
+    engine: "CUMMINS QSK-60-G",
     title: "CAMBIO DE CONJUNTO",
     type: "During",
-    service: "SRV-2026-004",
-    date: "2026-05-22",
-    specification: "Overhaul intermedio de potencia",
+    specification: "OVERHAUL INTERMEDIO DE POTENCIA",
     mainTitle: "Intervención correctiva en motor Cummins QSK60G en yacimiento petrolero",
-    desafio: "Presentó detonaciones anormales durante operación en el cilindro L2. La inspección boroscópica permitió identificar desgaste avanzado en la camisa del cilindro.",
+    desafio: "Presentó detonaciones anormales durante operation en el cilindro L2. La inspección boroscópica permitió identificar desgaste avanzado en la camisa del cilindro.",
     solucion: "Intervención correctiva focalizada, realizando el desmontaje del tren superior y reemplazo de la camisa de cilindro, elementos de sellado y tapa.",
     resultado: "El motor fue recuperado exitosamente, quedando en condiciones de avanzar a etapas de armado final y calibración.",
-    valorAgregado: "Rápida detección y resolución de la falla permitiendo evitar daños mayores.",
     imagenes: Array.from({ length: 9 }, (_, i) => `/images/qsk60g-conjunto_foto-${i + 1}.jpg`)
   },
   {
     id: 5,
-    engine: "Qsk 60 G",
-    title: "CARBURACION",
+    engine: "CUMMINS QSK-60-G",
+    title: "CARBURACIÓN",
     type: "After",
-    service: "SRV-2026-005",
-    date: "2026-05-25",
-    specification: "Ajuste de sistema de combustible",
+    specification: "AJUSTE DE SISTEMA DE COMBUSTIBLE",
     mainTitle: "Optimización de combustión en motor Cummins QSK60G",
     desafio: "Motor a gas presentaba desvíos en sus parámetros de combustión, afectando la eficiencia energética y la estabilidad operativa.",
     solucion: "Servicio de regulación estequiométrica y calibración mediante herramientas de diagnóstico y software original Cummins (INSITE / InPower).",
     resultado: "Se logró una combustión más eficiente y estable, con mejora notoria en el rendimiento del motor.",
-    valorAgregado: "Aporte de precisión técnica y herramientas de última generación para optimizar motores.",
     imagenes: Array.from({ length: 7 }, (_, i) => `/images/qsk60g-carburacion_foto-${i + 1}.jpg`)
   },
   {
     id: 6,
-    engine: "QSK60 G",
+    engine: "CUMMINS QSK-60-G",
     title: "M4",
     type: "After",
-    service: "SRV-2026-006",
-    date: "2026-05-28",
-    specification: "Mantenimiento modular específico",
+    specification: "MANTENIMIENTO MODULAR ESPECÍFICO",
     mainTitle: "Mantenimiento mayor M4 en motor Cummins QSK60G - 12.000 horas",
     desafio: "Alcanzó su intervalo de mantenimiento mayor trabajando en régimen de 60 Hz a 1800 RPM, lo que implica mayores cargas mecánicas y térmicas.",
     solucion: "Mantenimiento mayor tipo M4 enfocado en prevención. Incluyó reemplazo de tapas de cilindro, turboalimentadores y regulación de válvulas.",
     resultado: "El motor quedó en condiciones óptimas para continuar su operación continua con excelente estabilidad.",
-    valorAgregado: "Intervención anticipada reduciendo riesgos de fallas no planificadas.",
     imagenes: Array.from({ length: 9 }, (_, i) => `/images/qsk60g-m4_foto-${i + 1}.jpg`)
   },
   {
     id: 7,
-    engine: "Qsv 91",
-    title: "PERDIDA DE REFRIGERANTE",
+    engine: "CUMMINS QSV-91",
+    title: "PÉRDIDA DE REFRIGERANTE",
     type: "Before",
-    service: "SRV-2026-007",
-    date: "2026-06-01",
-    specification: "Localización de fugas complejas",
+    specification: "LOCALIZACIÓN DE FUGAS COMPLEJAS",
     mainTitle: "Intervención correctiva en motor Cummins QSV91 en planta industrial",
     desafio: "Pérdida de refrigerante en una tapa de cilindro derivó en contaminación del sistema de combustión y acumulación de carbonilla.",
     solucion: "Reemplazo de tapa de cilindro defectuosa, sustitución de turboalimentadores del banco afectado y descontaminación completa.",
     resultado: "El equipo fue recuperado y quedó en condiciones de retomar su operación continua con parámetros restablecidos.",
-    valorAgregado: "Experiencia técnica y capacidad de respuesta rápida en entornos industriales de alta exigencia.",
     imagenes: Array.from({ length: 8 }, (_, i) => `/images/qsv91-refrigerante_foto-${i + 1}.jpg`)
   },
   {
     id: 8,
-    engine: "QSV91",
-    title: "TITAN RECONSTRUCCION",
+    engine: "CUMMINS QSV-91",
+    title: "MANTENIMIENTO MAYOR DE M5",
     type: "After",
-    service: "SRV-2026-008",
-    date: "2026-06-02",
-    specification: "Reconstrucción completa V18",
-    mainTitle: "Mantenimiento mayor M5 en motor Cummins QSV91 Titan - Oil and Gas",
+    specification: "RECONSTRUCCIÓN COMPLETA V18",
+    mainTitle: "Mantenimiento mayor M5 en motor Cummins QSV91 - Oil and Gas",
     desafio: "Alcanzó su intervalo de mantenimiento mayor tipo M5 tras aproximadamente 30.000 horas de operación continua bajo condiciones severas.",
     solucion: "Mantenimiento mayor integral con desmontaje completo: sustitución de camisas, tapas de cilindro, bielas y los cuatro turboalimentadores.",
     resultado: "El motor fue puesto en condiciones óptimas para continuar su operación continua con máxima confiabilidad estructural.",
-    valorAgregado: "Maximizar la disponibilidad del equipo y extender su vida útil en aplicaciones críticas.",
     imagenes: Array.from({ length: 7 }, (_, i) => `/images/qsv91-titan_foto-${i + 1}.jpg`)
-  },
-  {
-    id: 9,
-    engine: "PARGRUP",
-    title: "¿POR QUÉ ELEGIRNOS?",
-    type: "After", 
-    service: "CVA-ESTRATEGIA",
-    date: "2026-06-11",
-    specification: "Valor Agregado & Contratos CVA",
-    mainTitle: "Acuerdos de Valor de Cliente (CVA) y Respaldo Postventa Integral",
-    desafio: "En el mercado de grupos electrógenos, la venta del equipo es solo el inicio. Los clientes buscan proveedores que garanticen mano de obra altamente calificada (un recurso cada vez más escaso), repuestos originales a precios accesibles y un acompañamiento genuino a largo plazo que elimine los problemas operativos de su gestión diaria.",
-    solucion: "Implementamos Acuerdos de Valor de Cliente (CVA), contratos de mantenimiento 100% a medida. Para aplicaciones Standby (Sby) ofrecemos coberturas anuales o de 500 horas, con toma de muestras de aceite semestrales, cambio de fluidos y envío automatizado de informes técnicos por email. Para aplicaciones Prime, estructuramos packs de consumibles cada 250 horas de operación continua.",
-    resultado: "Aprovechamos el hueco que las empresas tradicionales descuidan ('vender y desentenderse'). En ParGrup asumimos la total responsabilidad operativa del grupo electrógeno, permitiendo que el cliente se enfoque exclusivamente en su negocio con absoluta tranquilidad y previsibilidad de costos (con márgenes óptimos en repuestos del orden del 70%).",
-    valorAgregado: "Acompañamiento genuino postventa. No vendemos un equipo y nos vamos; nos convertimos en socios estratégicos del ciclo de vida útil del motor.",
-    imagenes: ["__STRATEGY_CARD__"] // Identificador especial para renderizar los iconos en lugar de una foto rota
   }
 ]
 
@@ -166,94 +127,77 @@ export function ServiceGallery() {
   const filteredTrabajos = filter === "all" ? trabajosMotores : trabajosMotores.filter((t) => t.type === filter)
 
   const nextPhoto = () => {
-    if (selectedTrabajo.imagenes[0] === "__STRATEGY_CARD__") return
     setCurrentFotoIdx((prev) => (prev + 1) % selectedTrabajo.imagenes.length)
   }
 
   const prevPhoto = () => {
-    if (selectedTrabajo.imagenes[0] === "__STRATEGY_CARD__") return
     setCurrentFotoIdx((prev) => (prev - 1 + selectedTrabajo.imagenes.length) % selectedTrabajo.imagenes.length)
   }
 
+  // Si cambia el filtro y el seleccionado ya no está, reajustamos al primero de la lista filtrada
+  const handleSelectTrabajo = (trabajo: typeof trabajosMotores[0]) => {
+    setSelectedTrabajo(trabajo)
+    setCurrentFotoIdx(0)
+    // Efecto Scroll Automático Hacia Arriba dentro del módulo visualizador
+    const container = document.getElementById("pargrup-viewer-anchor")
+    if (container) {
+      container.scrollIntoView({ behavior: "smooth", block: "nearest" })
+    }
+  }
+
   return (
-    <div className="space-y-12 w-full text-white">
+    <div id="pargrup-viewer-anchor" className="space-y-12 w-full text-white scroll-mt-24">
       
       {/* VISUALIZADOR HORIZONTAL PRINCIPAL */}
       <div className="w-full border border-neutral-800 bg-[#0a0a0a] rounded-xl overflow-hidden shadow-2xl">
         <div className="flex flex-col lg:flex-row h-full min-h-[550px]">
           
-          {/* PANEL IZQUIERDO: VISUALIZADOR DE IMAGEN / MÓDULO ESTRATÉGICO */}
+          {/* PANEL IZQUIERDO: VISUALIZADOR DE IMAGEN */}
           <div className="relative flex-1 lg:flex-[5.5] bg-black flex items-center justify-center p-6 min-h-[350px]">
-            {selectedTrabajo.imagenes[0] === "__STRATEGY_CARD__" ? (
-              /* Renderizado especial para la tarjeta corporativa sin fotos */
-              <div className="w-full max-w-md bg-gradient-to-br from-neutral-900 to-neutral-950 p-8 rounded-2xl border border-cyan-500/30 shadow-[0_0_30px_rgba(0,204,255,0.05)] text-center space-y-6 select-none animate-fadeIn">
-                <div className="mx-auto w-16 h-16 rounded-full bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
-                  <Handshake className="h-8 w-8 text-[#00CCFF]" />
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-xl font-bold tracking-tight text-white uppercase">CONTRATOS CVA PARGRUP</h4>
-                  <p className="text-xs text-neutral-400 font-light leading-relaxed">
-                    Tranquilidad operativa y predictibilidad técnica. Nos hacemos cargo de sus grupos electrógenos para que usted se encargue de su negocio.
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-3 text-left pt-2">
-                  <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-800 flex items-center gap-2.5">
-                    <Wrench className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-                    <span className="text-[11px] font-medium text-neutral-300">Soporte 24/7 Certificado</span>
-                  </div>
-                  <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-800 flex items-center gap-2.5">
-                    <Landmark className="h-4 w-4 text-green-400 flex-shrink-0" />
-                    <span className="text-[11px] font-medium text-neutral-300">Optimización de Costos</span>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              /* Renderizado estándar de imágenes */
-              <>
-                <img 
-                  src={selectedTrabajo.imagenes[currentFotoIdx]} 
-                  className="max-h-[450px] w-full object-contain select-none transition-all duration-300" 
-                  alt="Registro técnico ParGrup"
-                  onError={(e) => {
-                    e.currentTarget.src = "cummins-engine.jpg"
-                  }}
-                />
-                
-                <Button 
-                  variant="outline" size="icon" 
-                  className="absolute left-4 rounded-full bg-black/60 border-neutral-700 text-cyan-400 hover:bg-cyan-500 hover:text-black"
-                  onClick={prevPhoto}
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </Button>
-                <Button 
-                  variant="outline" size="icon" 
-                  className="absolute right-4 rounded-full bg-black/60 border-neutral-700 text-cyan-400 hover:bg-cyan-500 hover:text-black"
-                  onClick={nextPhoto}
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </Button>
+            <>
+              <img 
+                src={selectedTrabajo.imagenes[currentFotoIdx]} 
+                className="max-h-[450px] w-full object-contain select-none transition-all duration-300" 
+                alt="Registro técnico ParGrup"
+                onError={(e) => {
+                  e.currentTarget.src = "cummins-engine.jpg"
+                }}
+              />
+              
+              <Button 
+                variant="outline" size="icon" 
+                className="absolute left-4 rounded-full bg-black/60 border-neutral-700 text-cyan-400 hover:bg-cyan-500 hover:text-black"
+                onClick={prevPhoto}
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </Button>
+              <Button 
+                variant="outline" size="icon" 
+                className="absolute right-4 rounded-full bg-black/60 border-neutral-700 text-cyan-400 hover:bg-cyan-500 hover:text-black"
+                onClick={nextPhoto}
+              >
+                <ChevronRight className="h-5 w-5" />
+              </Button>
 
-                <div className="absolute bottom-4 flex gap-1.5 bg-black/70 px-3 py-1.5 rounded-full border border-neutral-800">
-                  {selectedTrabajo.imagenes.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentFotoIdx(i)}
-                      className={`h-1.5 rounded-full transition-all ${i === currentFotoIdx ? 'bg-[#00CCFF] w-4' : 'bg-neutral-600 w-1.5'}`}
-                    />
-                  ))}
-                </div>
-              </>
-            )}
+              <div className="absolute bottom-4 flex gap-1.5 bg-black/70 px-3 py-1.5 rounded-full border border-neutral-800">
+                {selectedTrabajo.imagenes.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentFotoIdx(i)}
+                    className={`h-1.5 rounded-full transition-all ${i === currentFotoIdx ? 'bg-cyan-400 w-4' : 'bg-neutral-600 w-1.5'}`}
+                  />
+                ))}
+              </div>
+            </>
           </div>
 
           {/* PANEL DERECHO: DATOS TÉCNICOS */}
           <div className="flex-1 lg:flex-[4.5] bg-[#0f0f0f] p-6 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-neutral-800">
-            <div className="space-y-4 overflow-y-auto max-h-[420px] pr-2">
-              <div className="border-l-4 border-[#00CCFF] pl-3">
+            <div className="space-y-4 overflow-y-auto max-h-[460px] pr-2">
+              <div className="border-l-4 border-cyan-400 pl-3">
                 <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">{selectedTrabajo.specification}</span>
                 <h3 className="text-2xl font-black tracking-tight uppercase text-white mt-0.5">
-                  {selectedTrabajo.engine} <span className="text-[#00CCFF] font-light">{selectedTrabajo.title}</span>
+                  {selectedTrabajo.engine} <span className="text-cyan-400 font-light">{selectedTrabajo.title}</span>
                 </h3>
               </div>
 
@@ -264,55 +208,40 @@ export function ServiceGallery() {
               <div className="space-y-3 text-xs">
                 <div className="bg-neutral-900/30 p-3 rounded border border-neutral-800">
                   <h4 className="flex items-center gap-1.5 font-bold text-red-400 uppercase tracking-wider text-[10px] mb-1">
-                    <Target className="h-3.5 w-3.5" /> {selectedTrabajo.id === 9 ? "Contexto del Mercado" : "Desafío Técnico"}
+                    <Target className="h-3.5 w-3.5" /> Desafío Técnico
                   </h4>
                   <p className="text-neutral-400 font-light leading-relaxed">{selectedTrabajo.desafio}</p>
                 </div>
 
                 <div className="bg-neutral-900/30 p-3 rounded border border-neutral-800">
                   <h4 className="flex items-center gap-1.5 font-bold text-cyan-400 uppercase tracking-wider text-[10px] mb-1">
-                    <Wrench className="h-3.5 w-3.5" /> {selectedTrabajo.id === 9 ? "Propuesta de Valor (CVA)" : "Solución Aplicada"}
+                    <Wrench className="h-3.5 w-3.5" /> Solución Aplicada
                   </h4>
                   <p className="text-neutral-400 font-light leading-relaxed">{selectedTrabajo.solucion}</p>
                 </div>
 
                 <div className="bg-neutral-900/30 p-3 rounded border border-neutral-800">
                   <h4 className="flex items-center gap-1.5 font-bold text-green-400 uppercase tracking-wider text-[10px] mb-1">
-                    <ShieldCheck className="h-3.5 w-3.5" /> {selectedTrabajo.id === 9 ? "Visión Comercial" : "Resultado Operativo"}
+                    <ShieldCheck className="h-3.5 w-3.5" /> Resultado Operativo
                   </h4>
                   <p className="text-neutral-400 font-light leading-relaxed">{selectedTrabajo.resultado}</p>
                 </div>
               </div>
             </div>
 
-            {/* MINIATURAS FOTOGRÁFICAS INFERIORES / CONTENEDOR ICONOS */}
+            {/* MINIATURAS FOTOGRÁFICAS INFERIORES (Se eliminó el contenedor de OTs y Fechas) */}
             <div className="mt-4 pt-4 border-t border-neutral-800">
-              <div className="flex justify-between text-[10px] font-mono text-neutral-500 mb-2">
-                <span>OT: {selectedTrabajo.service}</span>
-                <span>FECHA: {selectedTrabajo.date}</span>
+              <div className="grid grid-cols-6 gap-1.5">
+                {selectedTrabajo.imagenes.map((url, idx) => (
+                  <div 
+                    key={idx}
+                    className={`aspect-square rounded overflow-hidden cursor-pointer border transition-all ${idx === currentFotoIdx ? 'border-cyan-400 scale-95 shadow-md bg-black' : 'border-neutral-800 opacity-40 hover:opacity-100'}`}
+                    onClick={() => setCurrentFotoIdx(idx)}
+                  >
+                    <img src={url} className="h-full w-full object-cover" alt="Miniatura" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=100&auto=format&fit=crop&q=80" }} />
+                  </div>
+                ))}
               </div>
-              
-              {selectedTrabajo.imagenes[0] === "__STRATEGY_CARD__" ? (
-                /* Iconos decorativos inferiores para la tarjeta de por qué elegirnos */
-                <div className="flex items-center justify-start gap-4 text-neutral-600 font-mono text-[11px] h-[34px]">
-                  <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5 text-cyan-500" /> Postventa</span>
-                  <span className="flex items-center gap-1"><Lightbulb className="w-3.5 h-3.5 text-yellow-500" /> Estrategia</span>
-                  <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-green-500" /> Garantía</span>
-                </div>
-              ) : (
-                /* Renderizado por defecto de las miniaturas de fotos */
-                <div className="grid grid-cols-6 gap-1.5">
-                  {selectedTrabajo.imagenes.map((url, idx) => (
-                    <div 
-                      key={idx}
-                      className={`aspect-square rounded overflow-hidden cursor-pointer border transition-all ${idx === currentFotoIdx ? 'border-[#00CCFF] scale-95 shadow-md bg-black' : 'border-neutral-800 opacity-40 hover:opacity-100'}`}
-                      onClick={() => setCurrentFotoIdx(idx)}
-                    >
-                      <img src={url} className="h-full w-full object-cover" alt="Miniatura" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=100&auto=format&fit=crop&q=80" }} />
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
 
           </div>
@@ -348,14 +277,11 @@ export function ServiceGallery() {
             {filteredTrabajos.map((trabajo) => (
               <div
                 key={trabajo.id}
-                className={`group relative cursor-pointer overflow-hidden border p-4 transition-all rounded-lg ${selectedTrabajo.id === trabajo.id ? 'border-[#00CCFF] bg-cyan-950/10 shadow-[0_0_15px_rgba(0,204,255,0.1)]' : 'border-neutral-900 bg-black/40 hover:border-neutral-700'}`}
-                onClick={() => {
-                  setSelectedTrabajo(trabajo)
-                  setCurrentFotoIdx(0)
-                }}
+                className={`group relative cursor-pointer overflow-hidden border p-4 transition-all rounded-lg ${selectedTrabajo.id === trabajo.id ? 'border-cyan-400 bg-cyan-950/10 shadow-[0_0_15px_rgba(0,204,255,0.1)]' : 'border-neutral-900 bg-black/40 hover:border-neutral-700'}`}
+                onClick={() => handleSelectTrabajo(trabajo)}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <p className="font-mono text-xs font-bold text-[#00CCFF]">{trabajo.engine}</p>
+                  <p className="font-mono text-xs font-bold text-cyan-400">{trabajo.engine}</p>
                   <Badge variant="outline" className={`text-[9px] font-mono py-0 px-1.5 border ${typeConfig[trabajo.type as keyof typeof typeConfig]}`}>
                     {trabajo.type === "Before" ? "Antes" : trabajo.type === "During" ? "Durante" : "Después"}
                   </Badge>
@@ -364,7 +290,7 @@ export function ServiceGallery() {
                   {trabajo.title}
                 </p>
                 <p className="text-[10px] text-neutral-500 mt-1 font-mono">
-                  {trabajo.imagenes[0] === "__STRATEGY_CARD__" ? "Infografía Estratégica" : `${trabajo.imagenes.length} fotografías vinculadas`}
+                  {trabajo.imagenes.length} fotografías vinculadas
                 </p>
               </div>
             ))}
