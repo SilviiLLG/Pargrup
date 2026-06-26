@@ -4,7 +4,7 @@ Este repositorio contiene el núcleo del sistema de gestión interna para **ParG
 
 ## 🚀 Tecnologías Utilizadas
 
-* **Entorno/Framework:** [Acá ponés lo que usaste, ej: Node.js / Express o Supabase]
+* **Entorno/Framework:** React, Reac + / Supabase]
 * **Base de Datos:** [Ej: PostgreSQL / Supabase / Firebase]
 
 ## ⚠️ Nota de Mantenimiento
