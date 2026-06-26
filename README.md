@@ -1,18 +1,21 @@
-# ParGrup - Backend & Sistema de Gestión
+# ParGrup - Landing Page
 
-Este repositorio contiene el núcleo del sistema de gestión interna para **ParGrup**, junto con los módulos de administración y mantenimiento. También incluye el código base inicial de la plataforma.
+Este repositorio contiene el código fuente de la Landing Page institucional de **ParGrup**. Está desarrollado con un enfoque moderno, optimizado para SEO y adaptado para dispositivos móviles.
 
 ## 🚀 Tecnologías Utilizadas
 
-* **Entorno/Framework:** React, Reac + / Supabase]
-* **Base de Datos:** [Ej: PostgreSQL / Supabase / Firebase]
+* **Frontend:** Next.js / React
+* **Hosting & Despliegue:** Vercel
 
-## ⚠️ Nota de Mantenimiento
+## 🌐 Producción
 
-Este repositorio contiene la lógica del panel de administración y el backend. También incluye una versión inicial de la landing page (sin las modificaciones estéticas finales). Para actualizar la landing page oficial en producción, se debe trabajar directamente sobre el repositorio principal `Pargrup`.
+El proyecto está configurado en Vercel con despliegue automático ante cambios en la rama principal.
 
-## 🛠️ Configuración Local
+* **Dominio Principal:** https://www.pargrup.com
+* **Redirección:** https://pargrup.com.ar
+
+## 🛠️ Desarrollo Local
 
 1. Clonar el repositorio:
    ```bash
- git clone https://github.com/SilviiLLG/Pargrup.git
+   git clone [https://github.com/SilviiLLG/Pargrup]
