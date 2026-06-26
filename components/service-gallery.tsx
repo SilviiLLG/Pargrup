@@ -101,7 +101,7 @@ const trabajosMotores = [
   },
   {
     id: 8,
-    engine: "CUMMINS QSV-91",
+    engine: "CUMMINS QSV-91-TITAN",
     title: "MANTENIMIENTO MAYOR DE M5",
     type: "After",
     specification: "RECONSTRUCCIÓN COMPLETA V18",
@@ -138,10 +138,11 @@ export function ServiceGallery() {
   const handleSelectTrabajo = (trabajo: typeof trabajosMotores[0]) => {
     setSelectedTrabajo(trabajo)
     setCurrentFotoIdx(0)
-    // Efecto Scroll Automático Hacia Arriba dentro del módulo visualizador
+    
+    // EFECTO SCROLL AUTOMÁTICO RE-OPTIMIZADO HASTA EL INICIO DE LA SECCIÓN (BLOCK: START)
     const container = document.getElementById("pargrup-viewer-anchor")
     if (container) {
-      container.scrollIntoView({ behavior: "smooth", block: "nearest" })
+      container.scrollIntoView({ behavior: "smooth", block: "start" })
     }
   }
 
@@ -229,7 +230,7 @@ export function ServiceGallery() {
               </div>
             </div>
 
-            {/* MINIATURAS FOTOGRÁFICAS INFERIORES (Se eliminó el contenedor de OTs y Fechas) */}
+            {/* MINIATURAS FOTOGRÁFICAS INFERIORES */}
             <div className="mt-4 pt-4 border-t border-neutral-800">
               <div className="grid grid-cols-6 gap-1.5">
                 {selectedTrabajo.imagenes.map((url, idx) => (

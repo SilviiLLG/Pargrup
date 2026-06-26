@@ -31,7 +31,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-3.5 w-3.5 text-[#00CCFF]" />
-              <span>contacto@pargrup.com</span>
+              <span>consultas@pargrup.com</span>
             </li>
             <li className="flex items-center gap-2">
               <MapPin className="h-3.5 w-3.5 text-[#00CCFF]" />

@@ -77,14 +77,14 @@ export function Guarantee() {
               <div className="space-y-4 text-xs leading-relaxed">
                 <div>
                   <span className="text-green-400 font-mono text-[10px] uppercase block mb-0.5">✓ VISIÓN COMERCIAL</span>
-                  <span className="text-red-400 font-mono text-[10px] uppercase block mb-1">⚠️ CONTEXTO DEL MERCADO</span>
+                  <span className="text-red-400 font-mono text-[10px] uppercase block mb-1"> CONTEXTO DEL MERCADO</span>
                   <p className="text-neutral-300">
                     Aprovechamos el hueco que las empresas tradicionales descuidan ("vender y desentenderse"). En ParGrup asumimos la total responsabilidad operativa del grupo electrógeno, permitiendo que el cliente se enfoque exclusivamente en su negocio con absoluta tranquilidad y previsibilidad de costos (con márgenes óptimos en repuestos del orden del 70%).
                   </p>
                 </div>
 
                 <div className="pt-3 border-t border-neutral-900">
-                  <span className="text-cyan-400 font-mono text-[10px] uppercase block mb-1">🛠️ PROPUESTA DE VALOR (LSA*)</span>
+                  <span className="text-cyan-400 font-mono text-[10px] uppercase block mb-1"> PROPUESTA DE VALOR (LSA*)</span>
                   <p className="text-neutral-300">
                     Implementamos Acuerdos de Valor de Cliente (LSA), contratos de mantenimiento 100% a medida. Para aplicaciones Standby (SBy) ofrecemos coberturas anuales o de 500 horas, con toma de muestras de aceite semestrales, cambio de fluidos y envío automatizado de informes técnicos por email. Para aplicaciones Prime, estructuramos nuestros packs de consumibles cada 250 horas de operación continua.
                   </p>
