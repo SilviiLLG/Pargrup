@@ -1,13 +1,47 @@
 'use client'
+
+import { useEffect } from 'react'
 import { Header } from '@/components/header'
 import { Hero } from '@/components/hero'
 import { Services } from '@/components/services'
-import { ServiceGallery } from '@/components/service-gallery' // Ruta exacta según tu estructura
+import { ServiceGallery } from '@/components/service-gallery' 
 import { Guarantee } from '@/components/guarantee' 
 import { Contact } from '@/components/contact'
 import Footer from '@/components/footer' 
 
 export default function HomePage() {
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Si está arriba de todo, forzamos "Inicio"
+      if (window.scrollY < 200) {
+        document.title = 'ParGrup | Inicio'
+        return
+      }
+
+      // Secciones a escanear según sus IDs en el HTML
+      const sections = [
+        { id: 'trabajos', title: 'ParGrup | Trabajos' },
+        { id: 'contacto', title: 'ParGrup | Contacto' }
+      ]
+
+      for (const section of sections) {
+        const element = document.getElementById(section.id)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          // Si la sección cruzó la mitad superior de la pantalla
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            document.title = section.title
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="flex flex-col min-h-screen bg-black text-white antialiased">
       <Header />
