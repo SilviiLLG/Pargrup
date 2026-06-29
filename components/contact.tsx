@@ -138,6 +138,9 @@ export function Contact() {
                 {/* Solución para que puedan responder directo al remitente */}
                 <input type="hidden" name="_replyto" value={formData.email} />
 
+                {/* Evita que Gmail agrupe los correos cambiando el asunto dinámicamente */}
+                <input type="hidden" name="_subject" value={`Nueva consulta web de ${formData.name || 'Cliente'}`} />
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Nombre *</label>
