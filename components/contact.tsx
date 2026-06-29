@@ -1,9 +1,9 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react' // Agregamos useState
+import { useRef, useState } from 'react'
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react'
-//editar los datos de contacto
+
 const contactInfo = [
   {
     icon: Phone,
@@ -46,11 +46,7 @@ export function Contact() {
   })
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Aquí iría la lógica para enviar el mail o guardar en base de datos
-    console.log('Datos enviados:', formData)
-    alert('¡Gracias! Su consulta ha sido enviada. Nos contactaremos pronto.')
-    setFormData({ name: '', company: '', email: '', service: '', message: '' })
+    // Dejamos que FormSubmit maneje la redirección y el envío nativo POST
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -60,7 +56,6 @@ export function Contact() {
 
   return (
     <section id="contacto" className="relative py-24 lg:py-32 overflow-hidden bg-background">
-      {/* El fondo y decoraciones se mantienen igual... */}
       <div className="absolute inset-0 bg-card/50" />
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
@@ -105,12 +100,20 @@ export function Contact() {
             <div className="h-full rounded-2xl glass p-6 lg:p-8">
               <h3 className="text-xl font-bold text-foreground mb-6">Envíenos un mensaje</h3>
               
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form 
+                action="https://formsubmit.co/Consultas@pargrup.com" 
+                method="POST" 
+                className="space-y-5"
+              >
+                {/* Configuración de FormSubmit */}
+                <input type="hidden" name="_next" value="https://www.pargrup.com" />
+                <input type="hidden" name="_captcha" value="false" />
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Nombre *</label>
                     <input 
-                      type="text" id="name" required 
+                      type="text" id="name" name="Nombre" required 
                       value={formData.name} onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-white focus:border-primary focus:outline-none" 
                       placeholder="Su nombre" 
@@ -119,7 +122,7 @@ export function Contact() {
                   <div>
                     <label className="block text-sm text-muted-foreground mb-2">Empresa</label>
                     <input 
-                      type="text" id="company" 
+                      type="text" id="company" name="Empresa"
                       value={formData.company} onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-white focus:border-primary focus:outline-none" 
                       placeholder="Empresa" 
@@ -130,7 +133,7 @@ export function Contact() {
                 <div>
                   <label className="block text-sm text-muted-foreground mb-2">Email *</label>
                   <input 
-                    type="email" id="email" required 
+                    type="email" id="email" name="Email" required 
                     value={formData.email} onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-white focus:border-primary focus:outline-none" 
                     placeholder="su@email.com" 
@@ -140,7 +143,7 @@ export function Contact() {
                 <div>
                   <label className="block text-sm text-muted-foreground mb-2">Mensaje *</label>
                   <textarea 
-                    id="message" required rows={4} 
+                    id="message" name="Mensaje" required rows={4} 
                     value={formData.message} onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-white focus:border-primary focus:outline-none resize-none" 
                     placeholder="¿En qué podemos ayudarlo?" 
