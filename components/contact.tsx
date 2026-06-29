@@ -52,8 +52,8 @@ export function Contact() {
 
     // Cartel moderno integrado en la UI (Modo Oscuro)
     Swal.fire({
-      title: '¡Gracias!',
-      text: 'Su consulta ha sido enviada. Nos contactaremos pronto.',
+      title: '¡Gracias por contactarnos!',
+      text: 'Su consulta ha sido enviada. Le responderemos a la brevedad.',
       icon: 'success',
       background: '#121212',
       color: '#ffffff',
