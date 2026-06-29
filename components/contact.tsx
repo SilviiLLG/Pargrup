@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react'
+import Swal from 'sweetalert2' // Importamos SweetAlert2
 
 const contactInfo = [
   {
@@ -45,8 +46,29 @@ export function Contact() {
     message: ''
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    // Dejamos que FormSubmit maneje la redirección y el envío nativo POST
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const form = e.currentTarget
+
+    // Cartel moderno integrado en la UI (Modo Oscuro)
+    Swal.fire({
+      title: '¡Gracias!',
+      text: 'Su consulta ha sido enviada. Nos contactaremos pronto.',
+      icon: 'success',
+      background: '#121212',
+      color: '#ffffff',
+      confirmButtonColor: '#00CCFF',
+      confirmButtonText: 'Aceptar',
+      customClass: {
+        popup: 'rounded-2xl border border-neutral-800 glass'
+      }
+    }).then((result) => {
+      // Cuando el usuario le da a "Aceptar", recién ahí se envía el formulario
+      if (result.isConfirmed) {
+        form.submit()
+        setFormData({ name: '', company: '', email: '', service: '', message: '' })
+      }
+    })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -103,11 +125,15 @@ export function Contact() {
               <form 
                 action="https://formsubmit.co/Consultas@pargrup.com" 
                 method="POST" 
+                onSubmit={handleSubmit}
                 className="space-y-5"
               >
                 {/* Configuración de FormSubmit */}
                 <input type="hidden" name="_next" value="https://www.pargrup.com" />
                 <input type="hidden" name="_captcha" value="false" />
+                
+                {/* Forzar idioma español en FormSubmit */}
+                <input type="hidden" name="_language" value="es" />
                 
                 {/* Solución para que puedan responder directo al remitente */}
                 <input type="hidden" name="_replyto" value={formData.email} />
