@@ -108,6 +108,9 @@ export function Contact() {
                 {/* Configuración de FormSubmit */}
                 <input type="hidden" name="_next" value="https://www.pargrup.com" />
                 <input type="hidden" name="_captcha" value="false" />
+                
+                {/* Solución para que puedan responder directo al remitente */}
+                <input type="hidden" name="_replyto" value={formData.email} />
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
@@ -133,7 +136,7 @@ export function Contact() {
                 <div>
                   <label className="block text-sm text-muted-foreground mb-2">Email *</label>
                   <input 
-                    type="email" id="email" name="Email" required 
+                    type="email" id="email" name="email" required 
                     value={formData.email} onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-white focus:border-primary focus:outline-none" 
                     placeholder="su@email.com" 
